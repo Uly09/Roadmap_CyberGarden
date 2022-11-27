@@ -37,7 +37,7 @@ export default {
           { text: 'Верстка сайтов', value: 'HTML-верстка', disabled: true }
         ],
         roadmap: [
-            { caption: "JavaScript", elements: [
+            {caption: "JavaScript", elements: [
                 {caption: "Чистый JS", elements: [
                     {caption: "Введение", elements: [
                         {caption: "История ЯП", elements: []},
@@ -72,8 +72,11 @@ export default {
             block += '<div class="row row-cols-' + array.length + '">';
 
             array.forEach((item) => {
-                block += '<div class="col"><button class="btn btn-secondary">' + item.caption + '</button>';
-                if (item.elements.length > 0) block = this.generateRoadmap(item.elements, block);
+                block += '<div class="col my-3 col-md-auto"><button class="btn btn-';
+                if (item.elements.length > 0) {
+                    block += 'secondary">' + item.caption + '</button>';
+                    block = this.generateRoadmap(item.elements, block);
+                } else block += 'outline-secondary">' + item.caption + '</button>';
                 block += '</div>';
             });
             block += '</div>';
