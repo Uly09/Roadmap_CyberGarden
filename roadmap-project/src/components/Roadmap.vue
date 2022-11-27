@@ -17,7 +17,7 @@
             </b-form-group>
         </b-card>
         <div v-show="toggleBtn"><b-button block variant="secondary">{{ selected }}</b-button></div>
-        <div v-show="toggleBtn" ref="roadmapBlock" class="container"></div>
+        <div v-show="toggleBtn" ref="roadmapBlock" class="container w-100"></div>
     </div>
 </template>
 
@@ -60,23 +60,23 @@ export default {
                         {caption: "Объекты", elements: []},
                         {caption: "Преобразования типов", elements: []},
                     ]},
-                ]},
-                {caption: "Фреймворки", elements: []}
+                ]}
             ] }
-
         ]
       }
     },
     methods: {
         generateRoadmap(array, block) {
-            block += '<div class="row row-cols-' + array.length + '">';
+            block += '<div class="row row-cols-' + array.length + '" justify-content-md-center>';
 
             array.forEach((item) => {
-                block += '<div class="col my-3 col-md-auto"><button class="btn btn-';
+                block += '<div class="col my-3 col-md-auto"><button type="button" class="btn btn-';
                 if (item.elements.length > 0) {
                     block += 'secondary">' + item.caption + '</button>';
                     block = this.generateRoadmap(item.elements, block);
-                } else block += 'outline-secondary">' + item.caption + '</button>';
+                } else {
+                    block += 'outline-secondary">' + item.caption + '</button>';
+                }
                 block += '</div>';
             });
             block += '</div>';
